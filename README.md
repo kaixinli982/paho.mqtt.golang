@@ -1,9 +1,7 @@
-
 [![GoDoc](https://godoc.org/github.com/eclipse/paho.mqtt.golang?status.svg)](https://godoc.org/github.com/eclipse/paho.mqtt.golang)
 [![Go Report Card](https://goreportcard.com/badge/github.com/eclipse/paho.mqtt.golang)](https://goreportcard.com/report/github.com/eclipse/paho.mqtt.golang)
 
 Eclipse Paho MQTT Go client
-===========================
 
 
 This repository contains the source code for the [Eclipse Paho](http://eclipse.org/paho) MQTT Go client library. 
@@ -69,3 +67,7 @@ Discussion of the Paho clients takes place on the [Eclipse paho-dev mailing list
 General questions about the MQTT protocol are discussed in the [MQTT Google Group](https://groups.google.com/forum/?hl=en-US&fromgroups#!forum/mqtt).
 
 There is much more information available via the [MQTT community site](http://mqtt.org).
+
+# paho.mqtt.golang
+增加从本地环境变量获取本地ip
+
