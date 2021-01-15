@@ -101,7 +101,11 @@ func openConnection(uri *url.URL, tlsc *tls.Config, timeout time.Duration, heade
 	case "tcps":
 		allProxy := os.Getenv("all_proxy")
 		if len(allProxy) == 0 {
-			conn, err := tls.DialWithDialer(&net.Dialer{Timeout: timeout}, "tcp", uri.Host, tlsc)
+			laddr,err:=net.ResolveTCPAddr("tcp",os.Getenv("LADDR"))
+			if err!=nil {
+				return nil,err
+			}
+			conn, err := tls.DialWithDialer(&net.Dialer{Timeout: timeout,LocalAddr:laddr}, "tcp", uri.Host, tlsc)
 			if err != nil {
 				return nil, err
 			}
