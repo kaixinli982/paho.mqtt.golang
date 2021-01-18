@@ -1,4 +1,4 @@
-module github.com/kaixinli982/paho.mqtt.golang
+module paho.mqtt.golang-master
 
 go 1.14
 
