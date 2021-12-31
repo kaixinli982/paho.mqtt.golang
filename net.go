@@ -18,6 +18,9 @@ import (
 	"crypto/tls"
 	"errors"
 	"fmt"
+	"github.com/eclipse/paho.mqtt.golang/packets"
+	"golang.org/x/net/proxy"
+	"golang.org/x/net/websocket"
 	"net"
 	"net/http"
 	"net/url"
@@ -25,9 +28,6 @@ import (
 	"reflect"
 	"sync/atomic"
 	"time"
-	"github.com/eclipse/paho.mqtt.golang/packets"
-	"golang.org/x/net/proxy"
-	"golang.org/x/net/websocket"
 )
 
 func signalError(c chan<- error, err error) {
@@ -266,6 +266,9 @@ func alllogic(c *client) {
 					DEBUG.Println(NET, "granted qoss", m.ReturnCodes)
 					for i, qos := range m.ReturnCodes {
 						t.subResult[t.subs[i]] = qos
+						if qos == 128 {
+							token.setError(errors.New("Subscribe Failed"))
+						}
 					}
 				}
 				token.flowComplete()
